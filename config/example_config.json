@@ -1,0 +1,105 @@
+{
+    "MAIL_SERVER": "172.30.1.40",
+    "MAIL_FROM": "admin@apex.sccwrp.co",
+    "MAINTAINERS": [
+        "duyn@sccwrp.org"
+    ],
+    "APP_SCRIPT_ROOT": "/smcdataquery",
+    "SYSTEM_FIELDS": [
+        "project_code",
+        "masterid",
+        "objectid",
+        "globalid",
+        "created_date",
+        "created_user",
+        "last_edited_date",
+        "last_edited_user",
+        "submissionid",
+        "warnings",
+        "login_email"
+    ],
+    "filter_dropdowns": {
+        "initial_view": "vw_dataquery",
+        "dropdown_order": [
+            "county_dropdown",
+            "watershed_dropdown",
+            "station_dropdown"
+        ],
+        "county_dropdown": {
+            "label": "Select a County",
+            "field": "county",  
+            "dependent_dropdowns": [
+                "watershed_dropdown",
+                "station_dropdown"
+            ]
+        },
+        "watershed_dropdown": {
+            "label": "Select a Watershed",
+            "field": "smcshed",  
+            "dependent_dropdowns": [
+                "county_dropdown", 
+                "station_dropdown"
+            ]
+        },
+        "station_dropdown": {
+            "label": "Select a Station",
+            "field": "stationid",  
+            "dependent_dropdowns": [
+                "county_dropdown", 
+                "watershed_dropdown"
+            ]
+        }
+    },
+    "data_dropdowns": {
+        "algae_dropdown": {
+            "label": "Algae",
+            "options": [
+                {
+                    "algae": {
+                        "label": "Algae",
+                        "table": "unified_algae"
+                    },
+                    "asci": {
+                        "label": "ASCI",
+                        "table": "analysis_asci"
+                    }
+                }
+            ]
+        },
+        "bmi_dropdown": {
+            "label": "BMI",
+            "options": [
+                {
+                    "taxonomy": {
+                        "label": "Taxonomy",
+                        "table": "unified_taxonomy"
+                    },
+                    "csci-core": {
+                        "label": "CSCI-Core",
+                        "table": "analysis_csci_core"
+                    },
+                    "csci-supp1-grps": {
+                        "label": "CSCI-Supp1-grps",
+                        "table": "analysis_csci_suppl1_grps"
+                    },
+                    "csci-supp1-mmi": {
+                        "label": "CSCI-Supp1-mmi",
+                        "table": "analysis_csci_suppl1_mmi"
+                    },
+                    "csci-supp1-oe": {
+                        "label": "CSCI-Supp1-oe",
+                        "table": "analysis_csci_suppl1_oe"
+                    },
+                    "csci-supp2-mmi": {
+                        "label": "CSCI-Supp2-mmi",
+                        "table": "analysis_csci_suppl2_mmi"
+                    },
+                    "csci-supp2-oe": {
+                        "label": "CSCI-Supp2-oe",
+                        "table": "analysis_csci_suppl2_oe"
+                    }
+                }
+            ]
+        }
+    }
+}

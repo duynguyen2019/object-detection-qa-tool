@@ -1,0 +1,139 @@
+/* ========================= MainVideo.css ========================= */
+
+/* ----------------- UploadVideoArea Styles ----------------- */
+
+/* Container for the upload video area */
+.upload-video-area {
+    width: 30%; /* Consistent with .window width */
+    height: 100%;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    background-color: #f0f8ff; /* Light blue background to differentiate */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+  }
+  
+  /* Active drag state styling */
+  .upload-video-area.active,
+  .upload-video-area.drag-active {
+    border-color: #007bff;
+    background-color: #e6f7ff;
+  }
+  
+  /* Instruction text inside the upload area */
+  .upload-video-area p {
+    color: #666;
+    font-size: 16px;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  /* Uploaded video styling */
+  .upload-video-area video {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 4px;
+    object-fit: contain;
+  }
+  
+  /* ----------------- ProcessedVideoArea Styles ----------------- */
+  
+  /* Container for the processed video area */
+  .processed-video-area {
+    width: 30%; /* Consistent with .window width */
+    height: 100%;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9; /* Light gray background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Processed video element */
+  .processed-video-area video {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 4px;
+    object-fit: contain;
+  }
+  
+  /* Overlay displayed during processing */
+  .processed-video-area .processing-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent overlay */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2; /* Ensure it sits above the video */
+  }
+  
+  /* Processing text */
+  .processed-video-area .processing-overlay p {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  /* Spinner inside the processing overlay */
+  .processed-video-area .processing-overlay .spinner {
+    border: 6px solid #ccc;
+    border-top: 6px solid #007bff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+  }
+  
+  /* Reuse the existing spinner animation or define it here if not already defined */
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* ----------------- Arrow for Video Components ----------------- */
+  
+  /* Reuse the existing .arrow class if appropriate */
+  
+  /* ----------------- Responsive Adjustments ----------------- */
+  
+  /* Ensure video components are responsive on smaller screens */
+  @media (max-width: 768px) {
+    .upload-video-area,
+    .processed-video-area,
+    .window {
+      width: 45%; /* Adjust width for smaller screens */
+      height: 45vh; /* Adjust height accordingly */
+    }
+  
+    .verification-panel,
+    .ai-data-scientist-panel {
+      width: 30%; /* Adjust width for smaller screens */
+      margin-left: 10px;
+    }
+  
+    .tabs {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .tab-button {
+      margin: 5px 0;
+    }
+  }
+  

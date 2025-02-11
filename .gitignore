@@ -1,0 +1,17 @@
+docker/deploy.sh
+docker/restart_app.sh
+node_modules/
+__pycache__/
+testing/
+.DS_Store
+_*
+dist/config
+api/export/
+api/static/bundles/
+api/static/css/
+api/test.py
+config/config.json
+uploads/
+models/
+runs/
+static/

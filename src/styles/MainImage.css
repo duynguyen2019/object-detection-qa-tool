@@ -1,0 +1,415 @@
+/* Wrap the entire layout */
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh; /* Optional: make it full viewport height */
+}
+
+/* Top Bar styling */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align content to the left */
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-bottom: 2px solid #ccc;
+  width: 100%; /* Ensure it spans the full width */
+}
+
+
+.top-bar label {
+  margin-right: 8px;
+  font-weight: 500;
+}
+
+.model-select {
+  padding: 6px 8px;
+  border-radius: 4px;
+}
+
+/* Main container for left window, arrow, right window, and verification panel */
+.main-container {
+  display: flex;
+  width: 100%;
+  height: 70vh; /* Ensures a certain height for the windows */
+  box-sizing: border-box;
+  /* If you'd like them top-aligned rather than center: */
+  align-items: flex-start;
+  justify-content: center; 
+}
+
+/* Individual window styling */
+.window {
+  width: 30%; /* Adjust as needed */
+  height: 100%;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;          
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Left and right window coloring */
+.left-window {
+  background-color: #f9f9f9;
+}
+
+.right-window {
+  background-color: #eef7ff;
+}
+
+/* The arrow in between */
+.arrow {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 20px;
+}
+
+/* Uploaded image fills the entire left window */
+.uploaded-image {
+  max-width: 100%;        /* Ensure the image doesn't exceed its container's width */
+  max-height: 100%;       /* Ensure the image doesn't exceed its container's height */
+  object-fit: contain;    /* Maintain the original aspect ratio */
+  display: block;         /* Remove inline spacing around the image */
+}
+
+
+/* The processed-area sits inside the right window */
+.processed-area {
+  width: 100%;
+  height: 100%;
+  position: relative; /* To allow absolutely positioned bounding boxes */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the content */
+  overflow: hidden; /* Prevent overflow */
+}
+
+/* Container that wraps the processed image and bounding boxes */
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The processed image is responsive */
+.processed-image {
+  max-width: 100%; /* Fit horizontally */
+  max-height: 100%; /* Fit vertically */
+  object-fit: contain; /* Maintain aspect ratio */
+  display: block;
+}
+
+/* Absolutely positioned bounding boxes (within .image-container) */
+.bounding-box {
+  position: absolute;
+  border: 2px solid red;
+  cursor: pointer;
+}
+
+/* Verification panel (now separate from the right window) */
+.verification-panel {
+  width: 20%; /* Adjust as needed */
+  height: 100%;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  margin-left: 20px; /* Gap between right window and panel */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+/* Verification question styles */
+.verification-question {
+  margin-bottom: 16px;
+}
+
+/* Placeholder text for instructions */
+.placeholder {
+  font-style: italic;
+  color: #666;
+}
+
+/* Basic button styling */
+button {
+  margin: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  border: none;
+  transition: background-color 0.2s ease;
+}
+
+/* Specific button colors */
+.agree-btn {
+  background-color: #4caf50;
+  color: #fff;
+}
+.agree-btn:hover {
+  background-color: #45a049;
+}
+
+.disagree-btn {
+  background-color: #f44336;
+  color: #fff;
+}
+.disagree-btn:hover {
+  background-color: #e53935;
+}
+
+.edit-detections-btn {
+  background-color: #ff9800;
+  color: #fff;
+}
+.edit-detections-btn:hover {
+  background-color: #fb8c00;
+}
+
+/* Optional style for drag state */
+.drag-active {
+  border: 3px dashed #007bff;
+}
+
+/* Spinner animation */
+.spinner {
+  border: 6px solid #ccc;
+  border-top: 6px solid #007bff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Inference output style */
+.output {
+  margin-top: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* AI Data Scientist Panel */
+.ai-data-scientist-panel {
+  width: 25%; /* Adjust width as needed */
+  height: 100%;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  margin-left: 20px; /* Space between Verification Panel and AI Data Scientist Panel */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f4f4f4; /* Subtle background color for distinction */
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  overflow: hidden; /* Prevent overflow if content grows */
+}
+
+/* Chat Container */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+/* Chat Messages */
+.chat-messages {
+  flex-grow: 1;
+  overflow-y: auto; /* Scroll if messages exceed the container */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+/* Individual Chat Message */
+.chat-message {
+  margin-bottom: 8px;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Bot Messages */
+.chat-message.bot {
+  background-color: #e0f7fa; /* Light blue for bot messages */
+  align-self: flex-start;
+}
+
+/* User Messages */
+.chat-message.user {
+  background-color: #e6ffe6; /* Light green for user messages */
+  align-self: flex-end;
+  text-align: right;
+}
+
+/* Chat Input Form */
+.chat-input-form {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* Chat Input */
+.chat-input {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* Chat Submit Button */
+.chat-submit-btn {
+  margin-left: 8px;
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.chat-submit-btn:hover {
+  background-color: #0056b3;
+}
+
+/* 1) The preview-gallery container under the main container */
+.preview-gallery {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #fafafa; /* Optional subtle background */
+  border-top: 2px solid #ccc; /* Optional separator line */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent wrapping of grid items */
+}
+
+.processed-images-grid {
+  display: inline-flex; /* Align items horizontally */
+  gap: 12px;            /* Space between items */
+}
+
+.processed-image-item {
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px;
+  background-color: #fff;
+  transition: box-shadow 0.2s ease;
+}
+
+.processed-image-item:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.detection-stats {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ccc;
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+
+.classification-text {
+  position: absolute;
+  top: -20px; /* Positions the text above the box */
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background for readability */
+  padding: 2px 4px;
+  font-size: 12px;
+  color: black;
+  border-radius: 3px;
+  white-space: nowrap; /* Prevents text from wrapping */
+}
+
+.image-id-overlay {
+  position: absolute;
+  top: 5px;               /* Adjust vertical positioning */
+  left: 5px;              /* Adjust horizontal positioning */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  color: white;           /* Text color */
+  padding: 2px 5px;       /* Padding for better visibility */
+  font-size: 12px;        /* Adjust text size */
+  border-radius: 3px;     /* Rounded corners for the overlay box */
+  z-index: 1;             /* Ensure the overlay appears on top */
+}
+
+
+/* Tabs Navigation */
+.tabs {
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px 20px; /* Add left and right padding */
+  background-color: #f1f1f1;
+  border-bottom: 2px solid #ccc;
+}
+
+
+.tab-button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  background-color: transparent;
+  border-bottom: 2px solid transparent;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-button.active {
+  border-bottom: 2px solid #007bff;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.tab-button:hover {
+  color: #0056b3;
+}
+
+/* Tab Content Layout */
+.tab-content {
+  width: 100%;
+  height: 100%; /* Full height of the viewport */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-processing,
+.video-processing {
+  width: 100%;
+  height: 100%; /* Full height of the tab content */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* src/styles/Main.css */
+
+.current-image-id {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #333;
+}
