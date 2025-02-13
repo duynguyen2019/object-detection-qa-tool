@@ -1,7 +1,7 @@
 {
   "name": "objectdetectiontool",
   "version": "1.0.0",
-  "description": "Simple app to query data",
+  "description": "App to build and deploy object detection models",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
