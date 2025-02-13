@@ -21,7 +21,7 @@ function UploadImageArea({ onDrop, uploadedImage, isDragActive }) {
       {uploadedImage ? (
         <img src={uploadedImage} alt="Uploaded" className="uploaded-image" />
       ) : (
-        <p>Drag and drop an image here, or click to upload.</p>
+        <p>Drag and drop images here</p>
       )}
     </div>
   );

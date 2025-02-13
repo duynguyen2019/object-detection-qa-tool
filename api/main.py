@@ -1,7 +1,6 @@
 import os
-from flask import Blueprint, jsonify, render_template, flash, send_from_directory, session, request, current_app, g
 import uuid
-from .utils import requires_auth, get_distinct_column_values
+from flask import Blueprint, jsonify, render_template, flash, send_from_directory, session, request, current_app, g, send_file
 from ultralytics import YOLO
 from PIL import Image 
 
@@ -31,6 +30,15 @@ def main(path):
 # @homepage.route('/assets/<filename>', methods=['GET'])
 # def serve_asset(filename):
 #     return send_from_directory('static', f'icons/{filename}')
+
+@homepage.route('/object-detection/download-demo', methods=['POST'])
+def download_demo():
+    demo_file_path = os.path.join(os.getcwd(), 'static', 'demo', 'demo_images.zip')
+
+    if not os.path.exists(demo_file_path):
+        return {"error": "File not found"}, 404
+
+    return send_file(demo_file_path, as_attachment=True, download_name="demo_results.zip")
 
 @homepage.route('/object-detection/detect', methods=['POST'])
 def detect():

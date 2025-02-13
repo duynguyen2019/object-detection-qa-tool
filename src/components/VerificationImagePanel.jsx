@@ -1,5 +1,4 @@
-// src/components/VerificationImagePanel.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 function VerificationImagePanel({
@@ -11,6 +10,13 @@ function VerificationImagePanel({
   calculateTotalCount,
   processedResults
 }) {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleCoolClick = () => {
+    setShowModal(false);
+    window.location.reload(); // Refresh the app
+  };
+
   return (
     <div className="verification-panel">
       <h3>Verification Panel</h3>
@@ -45,6 +51,11 @@ function VerificationImagePanel({
         {isEditMode ? 'Finish Editing' : 'Add Boxes'}
       </button>
 
+      {/* New Button for Modal */}
+      <button className="show-modal-btn" onClick={() => setShowModal(true)}>
+        Finish Session/Upload data to Training Set
+      </button>
+
       {/* Detection Stats */}
       <div className="detection-stats" style={{ marginTop: '1rem' }}>
         <h4>Detection Stats</h4>
@@ -53,11 +64,23 @@ function VerificationImagePanel({
             Image #{i + 1}: {item.detection_count} seastars
           </p>
         ))}
-
         <p>
           <strong>Total seastars:</strong> {calculateTotalCount()}
         </p>
       </div>
+
+      {/* Modal */}
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h2>Important Message</h2>
+            <p>Data has been uploaded to the database and training job will be run. Please check back next week. App will be refreshed</p>
+            <button className="cool-btn" onClick={handleCoolClick}>
+              Cool!
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
