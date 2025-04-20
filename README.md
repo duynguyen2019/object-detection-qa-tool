@@ -14,5 +14,5 @@ If you haven't installed Conda, download and install **Miniconda** or **Anaconda
 Run the following command in your terminal to create the environment:
 
 ```sh
-conda env create -f dev_environment.yml
+bash setup-env.sh
 ```
