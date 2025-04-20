@@ -1,7 +1,3 @@
-# Development Environment Setup
-
-This repository includes a Conda environment configuration file (`dev_environment.yml`) that allows you to create an identical development environment.
-
 ## 🔧 Setting Up the Environment
 
 ### 1️⃣ Install Conda

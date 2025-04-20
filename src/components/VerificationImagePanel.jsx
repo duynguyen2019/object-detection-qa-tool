@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { saveAs } from 'file-saver'; // Import file-saver for downloading CSV
 
 function VerificationImagePanel({
   isEditMode,
@@ -15,6 +16,17 @@ function VerificationImagePanel({
   const handleCoolClick = () => {
     setShowModal(false);
     window.location.reload(); // Refresh the app
+  };
+
+  const handleExportCSV = () => {
+    const csvContent = [
+      'Image Number,Detection Count',
+      ...processedResults.map((item, i) => `Image #${i + 1},${item.detection_count}`),
+      `Total,${calculateTotalCount()}`
+    ].join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    saveAs(blob, 'detection_stats.csv');
   };
 
   return (
@@ -68,6 +80,11 @@ function VerificationImagePanel({
           <strong>Total seastars:</strong> {calculateTotalCount()}
         </p>
       </div>
+
+      {/* Button for exporting CSV */}
+      <button className="export-csv-btn" onClick={handleExportCSV}>
+        Export Detection Stats as CSV
+      </button>
 
       {/* Modal */}
       {showModal && (
