@@ -18,7 +18,7 @@ function App() {
         <div className="modal-overlay">
           <div className="modal-content">
             <h2>Instructions</h2>
-            <p>Welcome! Here is how to use the app:</p>
+            <p>Welcome coders! Here is how to use the app:</p>
             <ol>
               <li>Download demo data, unzip, and drop the images to the drop zone</li>
               <li>Use the drawing tool to box the seastars that the app miss</li>
