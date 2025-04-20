@@ -15,7 +15,6 @@ function VerificationImagePanel({
 
   const handleCoolClick = () => {
     setShowModal(false);
-    window.location.reload(); // Refresh the app
   };
 
   const handleExportCSV = () => {
@@ -65,7 +64,7 @@ function VerificationImagePanel({
 
       {/* New Button for Modal */}
       <button className="show-modal-btn" onClick={() => setShowModal(true)}>
-        Finish Session/Upload data to Training Set
+        Upload data to Training Set
       </button>
 
       {/* Detection Stats */}
